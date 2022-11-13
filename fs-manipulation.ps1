@@ -1,6 +1,9 @@
 # Hide the path file
 function Hide-File {
-    param([Parameter(Mandatory)][string]$Path)
+    param(
+        [Parameter(Mandatory)]
+        [string]$Path
+    )
 
     if (!(((Get-Item -Path $Path -Force).Attributes.ToString() -Split ", ") -Contains "Hidden")) {
         (Get-Item -Path $Path -Force).Attributes += "Hidden"
@@ -9,7 +12,11 @@ function Hide-File {
 
 # Create a new directory in path directory
 function New-Directory {
-    param ([Parameter(Mandatory)][string]$Path, [switch]$Hide)
+    param (
+        [Parameter(Mandatory)]
+        [string]$Path,
+        [switch]$Hide
+    )
 
     PROCESS {
         If (!(test-path $Path)) {
