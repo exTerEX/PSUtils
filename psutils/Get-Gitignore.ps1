@@ -24,19 +24,19 @@
 
 Set-StrictMode -Off;
 
-[string[]] $list = $args
-$params = $list -join ","
+[String[]] $List = $Args
+$Params = $List -Join ","
 
-if (!$params) {
+if (!$Params) {
     "usage: Get-Gitignore [args]";
 
     "args:";
 
-    invoke-restmethod -uri "https://www.gitignore.io/api/list"
+    Invoke-Restmethod -Uri "https://www.gitignore.io/api/list"
 
-    exit 1
+    Exit 1
 }
 
-invoke-restmethod -uri "https://www.gitignore.io/api/$params"
+Invoke-Restmethod -Uri "https://www.gitignore.io/api/$Params"
 
-exit 0
+Exit 0
